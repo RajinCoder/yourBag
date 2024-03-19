@@ -1,0 +1,37 @@
+
+// Define an interface for the structure of each headline item
+interface Headline {
+  headline: string;
+  paragraph: string;
+}
+   // Use the Headline interface to type the initial state
+  // const [headlines, setHeadlines] = useState<Headline[]>([]);
+  // const [dataSent, setDataSent] = useState(false);
+ 
+  // async function sendBasketballMoves() {
+  //   const { data, error } = await supabase
+  //     .from("basketballMoveCards")
+  //     .insert(headlines)
+  //     .select();
+
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  //   if (data) {
+  //     setDataSent(true);
+  //     console.log("this worked");
+  //   }
+  // }
+
+  // // Fetching the webscraped basketball data
+  // useEffect(() => {
+  //   fetch("http://127.0.0.1:5000/api/headlines")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       // Assuming data.headlines is an array of objects conforming to the Headline interface
+  //       setHeadlines(data.headlines);
+  //     })
+  //     .catch((error) => console.error("Error fetching headlines:", error));
+
+  //   //sendBasketballMoves();
+  // }, []);
