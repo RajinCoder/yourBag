@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model basketballMoveCards {
+  uid         BigInt          @id @unique @default(autoincrement())
+  name        String          @db.VarChar
+  description String
+  favorites   FavoriteCards[]
+}
+
+model User {
+  uuid      String          @id @default(uuid())
+  email     String          @unique
+  password  String
+  favorites FavoriteCards[]
+}
+
+model FavoriteCards {
+  id               Int                 @id @default(autoincrement())
+  userId           String
+  user             User                @relation(fields: [userId], references: [uuid])
+  basketballMoveId BigInt
+  basketballMove   basketballMoveCards @relation(fields: [basketballMoveId], references: [uid])
+}
